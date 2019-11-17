@@ -1,0 +1,10 @@
+CREATE DATABASE IF NOT EXISTS cowMatrix;
+
+USE cowMatrix;
+
+create TABLE IF NOT EXISTS cows (
+  id INT AUTO_INCREMENT,
+  name VARCHAR(50) NOT NULL,
+  description VARCHAR(180) NOT NULL,
+  PRIMARY KEY (id)
+);
