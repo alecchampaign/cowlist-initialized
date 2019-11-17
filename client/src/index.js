@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import CowList from "./components/cowList.js";
+import Modal from "./components/modal.js";
 import getCows from "./lib/getCows.js";
 
 class App extends React.Component {
@@ -8,8 +9,9 @@ class App extends React.Component {
     super(props);
     this.state = {
       cows: [],
-      selectedCow: null
+      selectedCow: { name: '', description: '' }
     }
+    this.handleClick = this.handleClick.bind(this);
   }
 
   componentDidMount() {
@@ -17,15 +19,22 @@ class App extends React.Component {
       this.setState({
         cows: res.data
       });
-      console.log(this.state);
     });
+  }
+
+  handleClick(cow) {
+    this.setState({
+      selectedCow: cow
+    });
+    console.log(cow);
   }
 
   render() {
     return (
     <div>
       <h1>Cow List</h1>
-      <CowList cows={this.state.cows} />
+      <Modal cow={this.state.selectedCow} />
+      <CowList cows={this.state.cows} handleClick={this.handleClick}/>
     </div>
     );
   }
