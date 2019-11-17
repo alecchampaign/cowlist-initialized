@@ -2,12 +2,12 @@ const db = require('../db/index.js');
 
 module.exports = {
   get: (cb) => {
-    db.connect.query('SELECT name, description FROM cows', (err, data) => {
-      cb(err, results);
+    db.query('SELECT name, description FROM cows', (err, data) => {
+      cb(err, data);
     });
   },
   post: (req, cb) => {
-    db.connect.query('INSERT INTO cows(name, description) VALUES(?, ?)', [req.name, req.description], (err, data) => {
+    db.query('INSERT INTO cows(name, description) VALUES(?, ?)', [req.name, req.description], (err, data) => {
       cb(err, data);
     })
   },
