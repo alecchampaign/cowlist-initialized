@@ -24,6 +24,7 @@ class App extends React.Component {
   render() {
     return (
     <div>
+      <h1>Cow List</h1>
       <CowList cows={this.state.cows} />
     </div>
     );
